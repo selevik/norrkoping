@@ -40,3 +40,15 @@ function Set-SQL
 	
 	return $Reader 
 }
+    <#
+    .SYNOPSIS
+    Inserts into an SQL-db
+    
+    .DESCRIPTION
+    Inserts an SQL-query into a DB. Switch -KeepConnectionAlive can be used to keep the connection open. -ExecuteAsReader returns an object
+    
+    .EXAMPLE
+    C:\PS> Set-SQL -Query "Drop * from dbo.Test"
+    1 rows affected
+        
+    #>

@@ -1,6 +1,5 @@
-
-function Import-PSCredential {
-
+ function Import-PSCredential 
+ {
     param ( 
         [Parameter(Position=0)]
         [string]
@@ -62,13 +61,14 @@ function Import-PSCredential {
     
     #>
     
-    }
-    Export-ModuleMember -Function 'Import-PSCredential'
+}
+Export-ModuleMember -Function 'Import-PSCredential'
     
-    function Export-PSCredential {
-    
+function Export-PSCredential 
+{    
     param ( 
         [Parameter(Position=0)]
+        [PsCredential]
         #Pass Credential or UserName to the Cmdlet or get prompted 
         $Credential = (Get-Credential), 
         
@@ -104,7 +104,7 @@ function Import-PSCredential {
     Process {
         $export = "" | Select-Object Username, EncryptedPassword
     
-        $export.PSObject.TypeNames.Insert(0,’ExportedPSCredential’)
+        $export.PSObject.TypeNames.Insert(0,'ExportedPSCredential')
         $export.Username = $Credential.Username
         
         # Encrypt SecureString password using Data Protection API
@@ -143,4 +143,4 @@ function Import-PSCredential {
     
 }
     
-    Export-ModuleMember -Function 'Export-PSCredential'
+Export-ModuleMember -Function 'Export-PSCredential'

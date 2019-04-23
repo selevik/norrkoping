@@ -28,7 +28,7 @@ function Export-PSCredential
     } 
     $export = "" | Select-Object Username, EncryptedPassword
 
-    $export.PSObject.TypeNames.Insert(0,’ExportedPSCredential’)
+    $export.PSObject.TypeNames.Insert(0,'ExportedPSCredential')
     $export.Username = $Credential.Username
 
     # Encrypt SecureString password using Data Protection API
@@ -39,3 +39,28 @@ function Export-PSCredential
 
     return $Credential
 }
+<#
+.SYNOPSIS
+Exports Credentials to a encrypted XML-File
+
+.DESCRIPTION
+    Encrypt SecureString password using Data Protection API
+    Only the current user account can decrypt this cipher from the same computer
+
+.EXAMPLE
+C:\PS> $Cred = Get-Credential TestUser
+cmdlet Get-Credential at command pipeline position 1
+Supply values for the following parameters:
+
+C:\PS> Export-PSCredential $Cred
+UserName     Password
+--------     --------
+TestUser     System.Security.SecureString
+
+.EXAMPLE
+C:\PS> Export-PSCredential TestUser -Path C:\TestUser.cred
+UserName     Password
+--------     --------
+TestUser     System.Security.SecureString
+
+#>

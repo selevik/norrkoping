@@ -31,3 +31,26 @@ function Import-PSCredential
     
         New-Object System.Management.Automation.PSCredential $import.Username, $SecurePass
     }
+<#
+.SYNOPSIS
+Imports credentials from a encrypted XML-File
+
+.DESCRIPTION
+    Decrypts a password to a SecureString using Data Protection API
+    Only the current user account can decrypt this cipher
+
+.EXAMPLE
+C:\PS> $Cred = Import-PSCredential
+C:\PS> $Cred
+UserName     Password
+--------     --------
+TestUser     System.Security.SecureString
+
+.EXAMPLE
+C:\PS> $Cred = Import-PSCredential -Path C:\TestUser.Cred
+C:\PS> $Cred
+UserName     Password
+--------     --------
+TestUser     System.Security.SecureString
+
+#>
