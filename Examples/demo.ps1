@@ -1,9 +1,10 @@
-###Third
+###Fourth
 function Get-Answer ($Message)
 {
     $Yes = New-Object System.Management.Automation.Host.ChoiceDescription "&Yes",""
     $No = New-Object System.Management.Automation.Host.ChoiceDescription "&No",""
-    $choices = [System.Management.Automation.Host.ChoiceDescription[]]($Yes,$No)
+    $Maybe = New-Object System.Management.Automation.Host.ChoiceDescription "&Maybe",""
+    $choices = [System.Management.Automation.Host.ChoiceDescription[]]($Yes,$No,$Maybe)
     $caption = "Pick one"
     if (!$Message)
     {
@@ -14,12 +15,17 @@ function Get-Answer ($Message)
     if ($result -eq 0)
     {
         Write-Host "you picked Yes"
-        #continue
         return $true
+        #continue
     }
-    else
+    elseif ($result -eq 1)
     {
         Write-Host "You picked no"
         return $false
     }
+    else 
+    {
+        Write-Host "Maybe?!?!"
+    }
 }
+
