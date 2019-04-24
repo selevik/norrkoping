@@ -147,3 +147,9 @@ $Cred.Password | ConvertFrom-SecureString
 
 $Cred.GetNetworkCredential().Password
 
+. C:\_kod\norrkoping\Functions\Import-PSCredential.ps1
+
+## "Picker"
+
+Get-ADuser -filter {displayName -like "*Ekström"} | Out-GridView -PassThru
+
