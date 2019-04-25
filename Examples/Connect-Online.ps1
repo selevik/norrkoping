@@ -33,3 +33,5 @@ function Connect-Online
         }
     }   
 }
+
+Find-Module MSOnline
