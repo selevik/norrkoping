@@ -1,6 +1,6 @@
 function Get-SQL
 {
-	param (
+	param(
 		[parameter(Mandatory=$true)][string]$Query,
 		[string]$ConnString,
 		[System.Data.SQLClient.SQLConnection]$Connection = (New-Object System.Data.SQLClient.SQLConnection),
@@ -9,10 +9,10 @@ function Get-SQL
 
 	if ($ConnString) {
 
-	if($ConnString -match '"*"') {
-		$ConnString = $ConnString.TrimStart('"')
-		$ConnString = $ConnString.TrimEnd('"')
-	}
+        if($ConnString -match '"*"') {
+            $ConnString = $ConnString.TrimStart('"')
+            $ConnString = $ConnString.TrimEnd('"')
+        }
 
     } 
     else 

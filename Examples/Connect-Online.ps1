@@ -24,6 +24,7 @@ function Connect-Online
                         -Credential $Cred -Authentication Basic -AllowRedirection 
             Import-PsSession $Session -AllowClobber 
             Connect-MsolService -Credential $Cred #Deprecated 
+            
 
 	        
         }

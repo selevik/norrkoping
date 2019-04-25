@@ -15,9 +15,11 @@ function Get-Answer ($Message)
     {
         Write-Host "you picked Yes"
         #continue
+        return $true
     }
     else
     {
         Write-Host "You picked no"
+        return $false
     }
 }
